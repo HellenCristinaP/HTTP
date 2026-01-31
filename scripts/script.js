@@ -15,7 +15,7 @@ async function cadastrarClientes() {
         email: email
     };
 
-    const response = await fetch('http://localhost:3300/clientes', {
+    const response = await fetch('http://#', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
