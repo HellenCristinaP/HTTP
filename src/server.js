@@ -1,7 +1,11 @@
 import express from 'express';
 import clientes from './dados.js';
 import cors from 'cors';
-const PORT = 3300;
+import dotenv from 'dotenv';
+
+dotenv.config();
+const PORT = process.env.PORT;
+const KEY = process.env.KEY;
 
 const app = express();
 
@@ -9,14 +13,14 @@ app.use(cors());
 app.use(express.json());
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}/clientes`);
+    console.log(`Server is running on http://localhost:${PORT}/clientes/${KEY}`);
 });
 
-app.get('/clientes', (req, res) => {
+app.get(`/clientes/${KEY}`, (req, res) => {
     res.status(200).json(clientes);
 });
 
-app.post('/clientes', (req, res) => {
+app.post(`/clientes/${KEY}`, (req, res) => {
     const novoCliente = req.body;
     novoCliente.id = clientes.length + 1;
 
@@ -36,7 +40,7 @@ app.post('/clientes', (req, res) => {
     });
 });
 
-app.delete('/clientes/:id', (req, res) => {
+app.delete(`/clientes/${KEY}/:id`, (req, res) => {
     const { id } = req.params;
     const index = clientes.findIndex((cliente) => cliente.id === Number(id));
 
