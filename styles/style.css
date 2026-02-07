@@ -1,147 +1,339 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ========================================
+   PALETA DE CORES
+   ======================================== */
+:root {
+    --primary-purple: #6B46C1;
+    --dark-purple: #4C1D95;
+    --light-purple: #9F7AEA;
+    --white: #FFFFFF;
+    --accent-yellow: #FCD34D;
+    --dark-yellow: #F59E0B;
+    --light-gray: #F3F4F6;
+    --medium-gray: #8a8e94;
+    --text-primary: #1F2937;
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
 }
 
+/* ESTILOS GERAIS */
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    line-height: 1.5;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    flex-direction: column;
+    font-size: 16px;
 }
 
 .container {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    padding: 40px;
-    width: 100%;
-    max-width: 500px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-h1 {
-    color: #333;
-    margin-bottom: 30px;
+/* ========================================
+   HEADER
+   ======================================== */
+.header {
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--dark-purple) 100%);
+    color: var(--white);
+    padding: 40px 0;
+    box-shadow: 0 10px 30px rgba(107, 70, 193, 0.2);
+}
+
+.header .container {
     text-align: center;
-    font-size: 28px;
 }
 
-h2 {
-    color: #555;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    border-bottom: 2px solid #667eea;
-    padding-bottom: 10px;
+.logo {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--accent-yellow), var(--dark-yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
+
+.tagline {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+.main-container {
+    flex: 1;
+    padding: 60px 0;
+}
+
+section {
+    margin-bottom: 80px;
+}
+
+section h2 {
+    font-size: 32px;
+    color: var(--primary-purple);
+    margin-bottom: 40px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.5vh;
+    background: linear-gradient(90deg, var(--accent-yellow), var(--dark-yellow));
+    border-radius: 2px;
+}
+
+/* ========================================
+   FORM SECTION
+   ======================================== */
+.form-section {
+    background: var(--white);
+    padding: 50px 0;
+    border-radius: var(--border-radius);
+}
+
+.form-section .container {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--medium-gray);
+}
+
+.form-cadastro {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "name"
+        "email"
+        "submit";
+    gap: 18px;
+    align-items: stretch;
+}
+
+/* Atribui as áreas do grid para cada campo/button (posição definida em desktop breakpoint) */
+.form-cadastro .form-group:nth-of-type(1) { grid-area: name; }
+.form-cadastro .form-group:nth-of-type(2) { grid-area: email; }
 
 .form-group {
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 }
 
-label {
-    color: #333;
+.form-group label {
     font-weight: 600;
-    margin-bottom: 8px;
+    color: var(--primary-purple);
+    margin-bottom: 12px;
     font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-input {
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
+.form-group input {
+    padding: 12px 14px;
+    border: 2px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-size: 15px;
+    font-family: inherit;
+    transition: var(--transition);
+    background: var(--light-gray);
 }
 
-input:focus {
-    outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+.form-group input:focus {
+    border-color: var(--primary-purple);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(107, 70, 193, 0.1);
 }
 
-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 12px 30px;
+.form-group input::placeholder {
+    color: var(--medium-gray);
+}
+
+.btn-primary {
+    grid-area: submit;
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--dark-purple) 100%);
+    color: var(--white);
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 12px 16px;
+    border-radius: var(--border-radius);
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(107, 70, 193, 0.18);
+    position: relative;
+
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(107, 70, 193, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   CLIENTS SECTION
+   ======================================== */
+.clients-section {
+    background: var(--white);
+    padding: 50px 0;
+}
+
+.clients-section .container {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--medium-gray);
+}
+
+.clients-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.clients-list li {
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--medium-gray);
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.clients-list li:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-purple);
+    box-shadow: 0 12px 30px rgba(107, 70, 193, 0.15);
+}
+
+.clients-list li span {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: var(--dark-gray);
+    word-break: break-word;
+}
+
+.btn-delete {
+    background: #EF4444;
+    color: var(--white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 100%;
+    transition: var(--transition);
+    flex: 1;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+.btn-delete:hover {
+    background: #DC2626;
+    transform: scale(1.05);
 }
 
-button:active {
-    transform: translateY(0);
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+    background: linear-gradient(135deg, var(--dark-purple) 0%, var(--primary-purple) 100%);
+    color: var(--white);
+    padding: 30px 0;
+    text-align: center;
+    margin-top: auto;
 }
 
-ul {
-    list-style: none;
-}
-
-li {
-    background: #f5f5f5;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background 0.3s ease;
-}
-
-li:hover {
-    background: #efefef;
-}
-
-li strong {
-    color: #333;
-    font-weight: 600;
-}
-
-li button {
-    background: #ff6b6b;
-    padding: 8px 15px;
+footer p {
     font-size: 14px;
-    width: auto;
-    margin-left: 10px;
+    opacity: 0.9;
 }
 
-li button:hover {
-    background: #ff5252;
+footer a {
+    color: var(--accent-yellow);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.25em;
 }
 
-@media (max-width: 480px) {
-    .container {
-        padding: 20px;
+footer a:hover {
+    color: var(--dark-yellow);
+}
+
+/* ========================================
+   RESPONSIVO
+   ======================================== */
+@media (min-width: 900px) {
+    .logo {
+        font-size: 48px;
     }
 
-    h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
+    .tagline {
+        font-size: 18px;
     }
 
-    li {
-        flex-direction: column;
-        align-items: flex-start;
+    section h2 {
+        font-size: 32px;
     }
 
-    li button {
-        margin-left: 0;
-        margin-top: 10px;
-        width: 100%;
+    .form-cadastro {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "name email"
+            "submit submit";
+        gap: 30px;
+        align-items: flex-end;
+    }
+
+    .form-cadastro .form-group:nth-of-type(1) { grid-area: name; }
+    .form-cadastro .form-group:nth-of-type(2) { grid-area: email; }
+    .form-cadastro .btn-primary { 
+        grid-area: submit; 
+        padding: 14px 32px; }
+
+    .clients-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .form-section .container,
+    .clients-section .container {
+        padding: 40px;
+    }
+
+    .header {
+        padding: 40px 0;
+    }
+
+    .main-container {
+        padding: 60px 0;
+    }
+
+    section {
+        margin-bottom: 80px;
     }
 }
