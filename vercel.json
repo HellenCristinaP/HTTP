@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm install",
+  "devCommand": "node src/server.js",
+  "installCommand": "npm install",
+  "env": {
+    "PORT": "3001",
+    "KEY": "@VERCEL_SECRET_KEY"
+  },
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  }
+}

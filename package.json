@@ -1,1 +1,22 @@
-{"scripts":{"start":"node src/server.js","test":"echo \"Erro: no test specified\" && exit 1","dev":"nodemon src/server.js"},"dependencies":{"cors":"^2.8.6","dotenv":"^17.2.3","express":"^5.2.1"},"devDependencies":{"nodemon":"^3.1.11","sucrase":"^3.35.1"},"name":"http","version":"1.0.0","description":"","main":"index.js","keywords":[],"author":"","license":"ISC"}
+{
+  "name": "gerenciador-clientes",
+  "version": "1.0.0",
+  "description": "Aplicação de gerenciamento de clientes com API e Frontend",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "watch": "nodemon src/server.js",
+    "test": "node scripts/test-api.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "sucrase": "^3.35.1"
+  }
+}
